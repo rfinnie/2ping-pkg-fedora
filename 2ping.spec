@@ -1,11 +1,11 @@
 Name:           2ping
 Version:        2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Bi-directional ping utility
 License:        GPLv2+
-URL:            http://www.finnie.org/software/2ping/
+URL:            http://www.finnie.org/software/2ping
 Source0:        http://www.finnie.org/software/%{name}/%{name}-%{version}.tar.gz
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 Requires:       perl(Digest::CRC)
 Requires:       perl(Digest::MD5)
 Requires:       perl(Digest::SHA)
@@ -34,5 +34,8 @@ make install PREFIX=%{_prefix} DESTDIR=%{buildroot}
 %{_mandir}/man8/2ping6.8*
 
 %changelog
+* Tue Aug 13 2013 Christopher Meng <rpm@cicku.me> - 2.0-2
+- Perl 5.18 Rebuild.
+
 * Thu May 17 2012 Christopher Meng <rpm@cicku.me> - 2.0-1
 - Initial Package.
