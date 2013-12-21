@@ -5,17 +5,17 @@ Summary:        Bi-directional ping utility
 License:        GPLv2+
 URL:            http://www.finnie.org/software/2ping
 Source0:        http://www.finnie.org/software/%{name}/%{name}-%{version}.tar.gz
-Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
+BuildArch:      noarch
 Requires:       perl(Digest::CRC)
 Requires:       perl(Digest::MD5)
 Requires:       perl(Digest::SHA)
 Requires:       perl(IO::Socket::INET6)
-BuildArch:      noarch
+Requires:       perl(:MODULE_COMPAT_%(eval "`perl -V:version`"; echo $version))
 
 %description
 2ping is a bi-directional ping utility. It uses 3-way pings (akin to TCP SYN, 
-SYN/ACK, ACK) and after-the-fact state comparison between a 2ping listener 
-and a 2ping client to determine which direction packet loss occurs.
+SYN/ACK, ACK) and after-the-fact state comparison between a 2ping listener and
+a 2ping client to determine which direction packet loss occurs.
 
 %prep
 %setup -q
