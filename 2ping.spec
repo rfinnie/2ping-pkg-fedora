@@ -1,6 +1,6 @@
 Name:           2ping
 Version:        2.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Bi-directional ping utility
 License:        GPLv2+
 URL:            http://www.finnie.org/software/2ping
@@ -34,6 +34,9 @@ make install PREFIX=%{_prefix} DESTDIR=%{buildroot}
 %{_mandir}/man8/2ping6.8*
 
 %changelog
+* Wed Jun 03 2015 Jitka Plesnikova <jplesnik@redhat.com> - 2.0-6
+- Perl 5.22 rebuild
+
 * Wed Aug 27 2014 Jitka Plesnikova <jplesnik@redhat.com> - 2.0-5
 - Perl 5.20 rebuild
 
