@@ -1,12 +1,23 @@
+%if 0%{?rhel}
+%global with_python3 0
+%{!?__python2: %global __python2 /usr/bin/python2}
+%{!?python2_sitelib: %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%{!?py2_build: %global py2_build %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} build --executable="%{__python2} -s"}}
+%{!?py2_install: %global py2_install %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} install -O1 --skip-build --root %{buildroot}}}
+%endif
+
 Name:           2ping
 Version:        3.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Bi-directional ping utility
 License:        GPLv2+
 URL:            http://www.finnie.org/software/2ping
 Source0:        http://www.finnie.org/software/%{name}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
+%{?python_provide:%python_provide python2-%{name}}
 
 %description
 2ping is a bi-directional ping utility. It uses 3-way pings (akin to TCP SYN, 
@@ -14,16 +25,16 @@ SYN/ACK, ACK) and after-the-fact state comparison between a 2ping listener and
 a 2ping client to determine which direction packet loss occurs.
 
 %prep
-%autosetup -n 2ping-%{version}
+%setup -n %{name}-%{version}
 
 %build
 %py2_build
 
 %install
 %py2_install
-install -d -m 0755 $RPM_BUILD_ROOT/usr/share/man/man1
-install -m 0644 doc/2ping.1 $RPM_BUILD_ROOT/usr/share/man/man1/2ping.1
-install -m 0644 doc/2ping.1 $RPM_BUILD_ROOT/usr/share/man/man1/2ping6.1
+install -d -m 0755 %{buildroot}/usr/share/man/man1
+install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping.1
+install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping6.1
 
 %check
 %{__python2} setup.py test
@@ -37,6 +48,10 @@ install -m 0644 doc/2ping.1 $RPM_BUILD_ROOT/usr/share/man/man1/2ping6.1
 %{_mandir}/man1/2ping6.1*
 
 %changelog
+* Tue Mar 01 2016 Fabio Alessandro Locati <fabio@locati.cc> - 3.2.0-2
+- Fix for EL6 and EPEL7
+- Cleanup the SPEC file
+
 * Tue Mar 01 2016 Fabio Alessandro Locati <fabio@locati.cc> - 3.2.0-1
 - Update to 3.2.0
 
