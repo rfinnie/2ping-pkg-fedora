@@ -8,7 +8,7 @@
 %endif
 
 Name:           2ping
-Version:        3.2.0
+Version:        3.2.1
 Release:        2%{?dist}
 Summary:        Bi-directional ping utility
 License:        GPLv2+
@@ -48,6 +48,9 @@ install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping6.1
 %{_mandir}/man1/2ping6.1*
 
 %changelog
+* Sat Mar 26 2016 Fabio Alessandro Locati <fabio@locati.cc> - 3.2.1-1
+- Update to 3.2.1
+
 * Tue Mar 01 2016 Fabio Alessandro Locati <fabio@locati.cc> - 3.2.0-2
 - Fix for EL6 and EPEL7
 - Cleanup the SPEC file
