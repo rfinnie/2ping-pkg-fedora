@@ -1,12 +1,3 @@
-%if 0%{?rhel}
-%global with_python3 0
-%{!?__python2: %global __python2 /usr/bin/python2}
-%{!?python2_sitelib: %global python2_sitelib %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
-%{!?python2_sitearch: %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
-%{!?py2_build: %global py2_build %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} build --executable="%{__python2} -s"}}
-%{!?py2_install: %global py2_install %{expand: CFLAGS="%{optflags}" %{__python2} setup.py %{?py_setup_args} install -O1 --skip-build --root %{buildroot}}}
-%endif
-
 Name:           2ping
 Version:        3.2.1
 Release:        3%{?dist}
@@ -51,14 +42,14 @@ install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping6.1
 * Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.2.1-3
 - https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
 
-* Sat Mar 26 2016 Fabio Alessandro Locati <fabio@locati.cc> - 3.2.1-1
+* Sat Mar 26 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 3.2.1-1
 - Update to 3.2.1
 
-* Tue Mar 01 2016 Fabio Alessandro Locati <fabio@locati.cc> - 3.2.0-2
+* Tue Mar 01 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 3.2.0-2
 - Fix for EL6 and EPEL7
 - Cleanup the SPEC file
 
-* Tue Mar 01 2016 Fabio Alessandro Locati <fabio@locati.cc> - 3.2.0-1
+* Tue Mar 01 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 3.2.0-1
 - Update to 3.2.0
 
 * Tue Mar 01 2016 Ryan Finnie <ryan@finnie.org> - 3.1.0-1
