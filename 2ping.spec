@@ -1,6 +1,6 @@
 Name:           2ping
 Version:        3.2.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Bi-directional ping utility
 License:        GPLv2+
 URL:            http://www.finnie.org/software/2ping
@@ -39,6 +39,9 @@ install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping6.1
 %{_mandir}/man1/2ping6.1*
 
 %changelog
+* Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.1-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
