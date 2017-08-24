@@ -40,7 +40,7 @@ install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping6.1
 %{_mandir}/man1/%{name}6.1*
 
 %changelog
-* Thu Aug 24 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 4.1-1
+* Thu Aug 24 2017 Fabio Alessandro Locati <fale@fedoraproject.org> - 4.1-1
 - Update to 4.1
 
 * Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.1-5
