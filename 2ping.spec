@@ -1,14 +1,15 @@
 Name:           2ping
-Version:        3.2.1
-Release:        5%{?dist}
+Version:        4.1
+Release:        1%{?dist}
 Summary:        Bi-directional ping utility
 License:        GPLv2+
 URL:            http://www.finnie.org/software/2ping
 Source0:        http://www.finnie.org/software/%{name}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-%{?python_provide:%python_provide python2-%{name}}
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+BuildRequires:  pycryptopp
+%{?python_provide:%python_provide python3-%{name}}
 
 %description
 2ping is a bi-directional ping utility. It uses 3-way pings (akin to TCP SYN, 
@@ -19,26 +20,29 @@ a 2ping client to determine which direction packet loss occurs.
 %setup -n %{name}-%{version}
 
 %build
-%py2_build
+%py3_build
 
 %install
-%py2_install
+%py3_install
 install -d -m 0755 %{buildroot}/usr/share/man/man1
 install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping.1
 install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping6.1
 
 %check
-%{__python2} setup.py test
+%{__python3} setup.py test
 
 %files
 %doc ChangeLog COPYING README
-%{python2_sitelib}/*
-%{_bindir}/2ping
-%{_bindir}/2ping6
-%{_mandir}/man1/2ping.1*
-%{_mandir}/man1/2ping6.1*
+%{python3_sitelib}/*
+%{_bindir}/%{name}
+%{_bindir}/%{name}6
+%{_mandir}/man1/%{name}.1*
+%{_mandir}/man1/%{name}6.1*
 
 %changelog
+* Thu Aug 24 2016 Fabio Alessandro Locati <fale@fedoraproject.org> - 4.1-1
+- Update to 4.1
+
 * Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.2.1-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
