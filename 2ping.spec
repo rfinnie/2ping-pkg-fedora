@@ -8,7 +8,6 @@ Source0:        http://www.finnie.org/software/%{name}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  pycryptopp
 %{?python_provide:%python_provide python3-%{name}}
 
 %description
