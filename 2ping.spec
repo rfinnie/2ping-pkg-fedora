@@ -1,10 +1,10 @@
 Name:           2ping
-Version:        4.1
-Release:        5%{?dist}
+Version:        4.3
+Release:        1%{?dist}
 Summary:        Bi-directional ping utility
 License:        GPLv2+
-URL:            http://www.finnie.org/software/2ping
-Source0:        http://www.finnie.org/software/%{name}/%{name}-%{version}.tar.gz
+URL:            https://www.finnie.org/software/2ping
+Source0:        https://www.finnie.org/software/%{name}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -16,7 +16,7 @@ SYN/ACK, ACK) and after-the-fact state comparison between a 2ping listener and
 a 2ping client to determine which direction packet loss occurs.
 
 %prep
-%setup -n %{name}-%{version}
+%autosetup
 
 %build
 %py3_build
@@ -31,7 +31,8 @@ install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping6.1
 %{__python3} setup.py test
 
 %files
-%doc ChangeLog COPYING README
+%doc ChangeLog README
+%license COPYING
 %{python3_sitelib}/*
 %{_bindir}/%{name}
 %{_bindir}/%{name}6
@@ -39,6 +40,9 @@ install -m 0644 doc/2ping.1 %{buildroot}/usr/share/man/man1/2ping6.1
 %{_mandir}/man1/%{name}6.1*
 
 %changelog
+* Thu Jul 18 2019 Filipe Rosset <rosset.filipe@gmail.com> - 4.3-1
+- Update to 4.3 (thanks to Ryan Finnie) fixes rhbz#1473919
+
 * Thu Jan 31 2019 Fedora Release Engineering <releng@fedoraproject.org> - 4.1-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
