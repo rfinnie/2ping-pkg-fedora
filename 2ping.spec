@@ -1,6 +1,6 @@
 Name:           2ping
 Version:        4.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Bi-directional ping utility
 License:        GPLv2+
 URL:            https://www.finnie.org/software/2ping
@@ -38,6 +38,9 @@ install -Dp -m 0644 doc/2ping.1 %{buildroot}/%{_mandir}/man1/2ping6.1
 %{_mandir}/man1/%{name}6.1*
 
 %changelog
+* Thu Oct 03 2019 Miro Hrončok <mhroncok@redhat.com> - 4.3-5
+- Rebuilt for Python 3.8.0rc1 (#1748018)
+
 * Mon Aug 19 2019 Miro Hrončok <mhroncok@redhat.com> - 4.3-4
 - Rebuilt for Python 3.8
 
